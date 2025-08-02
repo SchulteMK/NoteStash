@@ -10,12 +10,18 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/SchulteMK/NoteStash/frontend"
+	"github.com/a-h/templ"
 )
 
 func main() {
 	fmt.Println("Hello, World!")
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	component := hello("John")
+	http.Handle("/", http.FileServerFS(frontend.Frontend))
+	http.Handle("/t", templ.Handler(component))
+	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello, World! :)")
 	})
 

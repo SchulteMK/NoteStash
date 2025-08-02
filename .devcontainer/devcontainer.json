@@ -6,9 +6,13 @@
 		"dockerfile": "Dockerfile"
 	},
 	"portsAttributes": {
+		"7331": {
+			"label": "Temple Hot Reload Proxy",
+			"onAutoForward": "openBrowserOnce"
+		},
 		"8080": {
 			"label": "Web Application",
-			"onAutoForward": "openBrowserOnce"
+			"onAutoForward": "ignore"
 		}
 	},
 	"postCreateCommand": "go mod download && go version",

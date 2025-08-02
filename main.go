@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"errors"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -11,19 +10,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/SchulteMK/NoteStash/frontend"
+	frontend "github.com/SchulteMK/NoteStash/static"
 	"github.com/a-h/templ"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
 
-	component := hello("John")
-	http.Handle("/", http.FileServerFS(frontend.Frontend))
-	http.Handle("/t", templ.Handler(component))
-	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, World! :)")
-	})
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServerFS(frontend.Frontend)))
+	http.Handle("/", templ.Handler(hello("Marcel")))
 
 	server := &http.Server{
 		Addr: ":8080",

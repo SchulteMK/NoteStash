@@ -12,7 +12,7 @@ var frontend embed.FS
 
 func init() {
 	var err error
-	Frontend, err = fs.Sub(frontend, "build")
+	Frontend, err = fs.Sub(frontend, "static")
 	if err != nil {
 		panic(err)
 	}

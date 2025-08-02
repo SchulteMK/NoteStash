@@ -2,12 +2,26 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Server",
+            "name": "Launch Server & Debug",
             "type": "go",
             "request": "launch",
             "mode": "debug",
             "program": "${workspaceFolder}/",
             "output": "${workspaceFolder}/debug/notestash"
+        },
+        {
+            "name": "Templ Auto Hot Reload",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "templ",
+            "runtimeArgs": [
+                "generate",
+                "--watch",
+                "--cmd=go run .",
+                "--proxy=http://localhost:8080"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
         }
     ]
 }

@@ -1,4 +1,4 @@
-__debug_bin*
+/debug
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,go
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,go
